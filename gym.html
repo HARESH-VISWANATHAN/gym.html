@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gym Management & Registration</title>
+    <style>
+        /* Background color for the page */
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            color: #e8f0f7;
+        }
+
+        /* Styling the headers specifically for this page */
+        h2 {
+            color: #e8f0f7;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+
+        /* Styling the table rows to be striped */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Custom style for the list items */
+        .features-list li {
+            color: #d4e5f0;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <h1 style="color: white; background-color: #333; text-align: center; padding: 15px; border-radius: 5px;">
+            Gym Management System
+        </h1>
+
+        <p>Welcome to our <b>Fitness Center</b>. This system helps manage members, plans, and trainer assignments.</p>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="gym_image_1.png" alt="Gym Logo" style="width: 45%; border: 2px solid #333; margin-right: 5px;">
+            <img src="gym_image_2.png" alt="Workout Image" style="width: 45%; border: 2px solid #333;">
+        </div>
+        <section>
+            <h2>Media Preview</h2>
+
+            <p><b>Audio:</b></p>
+            <audio controls preload="none">
+                <source src="gym_music.mp3" type="audio/mpeg">
+               </audio>
+
+            <p><b>Video:</b></p>
+            <video controls width="640" height="360" poster="media/preview_poster.jpg">
+                <source src="intro_workout.mp4" type="video/mp4">
+             </video>
+        <h2>Features</h2>
+        <ul class="features-list">
+            <li>Member Registration</li>
+            <li>Workout Plans</li>
+            <li>Trainer Assignments</li>
+            <li>Progress Tracking</li>
+        </ul>
+
+        <h2>Trainer Assignments</h2>
+        <table style="background-color: #ffffff; color: #2c3e50; border: 2px solid #1a1a2e;">
+            <tr>
+                <th style="background-color: #3498db; color: white; border: 2px solid #1a1a2e;">Trainer Name</th>
+                <th style="background-color: #3498db; color: white; border: 2px solid #1a1a2e;">Specialization</th>
+                <th style="background-color: #3498db; color: white; border: 2px solid #1a1a2e;">Assigned Members</th>
+            </tr>
+            <tr>
+                <td style="border: 2px solid #1a1a2e;">John Smith</td>
+                <td style="border: 2px solid #1a1a2e;">Weight Training</td>
+                <td style="border: 2px solid #1a1a2e;">25</td>
+            </tr>
+            <tr>
+                <td style="border: 2px solid #1a1a2e;">Emily Johnson</td>
+                <td style="border: 2px solid #1a1a2e;">Yoga & Flexibility</td>
+                <td style="border: 2px solid #1a1a2e;">18</td>
+            </tr>
+            <tr>
+                <td style="border: 2px solid #1a1a2e;">Michael Brown</td>
+                <td style="border: 2px solid #1a1a2e;">Cardio & Endurance</td>
+                <td style="border: 2px solid #1a1a2e;">30</td>
+            </tr>
+        </table>
+
+        <hr style="border: 1px solid #ccc; margin: 30px 0;">
+
+        <h1 style="text-align: center; color: #e8f0f7;"><u>Membership Registration Form</u></h1>
+
+        <form id="registrationForm" action="gym.php" method="post">
+            
+            <h2>Member Details</h2>
+            Full Name:
+            <input type="text" id="name" name="name" required><br><br>
+
+            Age:
+            <input type="number" id="age" name="age" min="10" max="80" required><br><br>
+
+            Gender:
+            <input type="radio" name="gender" value="Male"> Male
+            <input type="radio" name="gender" value="Female"> Female
+            <input type="radio" name="gender" value="Other"> Other <br><br>
+
+            Phone Number:
+            <input type="text" id="phone" name="phone" required>
+
+            <h2>Choose Membership Plan</h2>
+            <select name="plan" required style="padding: 10px; background-color: #eef;">
+                <option value="">--Select Plan--</option>
+                <option value="Basic">Basic Plan - Gym Access Only</option>
+                <option value="Standard">Standard Plan - Includes Group Classes</option>
+                <option value="Premium">Premium Plan - Trainer + Diet Consultation</option>
+            </select>
+
+            <h2>Select Trainer</h2>
+            <input type="radio" name="trainer" value="John Smith"> John Smith (Weight Training) <br>
+            <input type="radio" name="trainer" value="Emily Johnson"> Emily Johnson (Yoga & Flexibility) <br>
+            <input type="radio" name="trainer" value="Michael Brown"> Michael Brown (Cardio & Endurance) <br><br>
+
+            Any Health Conditions / Notes:
+            <textarea id="comments" name="comments" rows="4"></textarea>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <input type="submit" value="Register" style="background-color: #28a745; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px;">
+                <input type="reset" value="Clear Form" style="background-color: #dc3545; color: white; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; margin-left: 10px;">
+            </div>
+        </form>
+
+        <div id="response" style="margin-top:20px; color: #d4e5f0;"></div>
+
+        <p style="text-align: center; margin-top: 30px; color: #d4e5f0;">
+            <b>Contact Us:</b> Email - info@gymcenter.com | Phone - 123-456-7890
+        </p>
+    </div>
+
+    <script>
+    document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const submitBtn = form.querySelector('input[type="submit"]');
+        const responseEl = document.getElementById('response');
+        responseEl.innerHTML = '';
+        submitBtn.disabled = true;
+
+        const data = new FormData(form);
+        try {
+            const res = await fetch(form.action, { method: 'POST', body: data });
+            const json = await res.json();
+
+            if (json.status === 'success') {
+                responseEl.innerHTML = '<div style="background:#d4edda;color:#155724;padding:10px;border-radius:4px;border:1px solid #c3e6cb;">' + json.message + ' (ID: ' + (json.id || '') + ')</div>';
+                form.reset();
+            } else {
+                responseEl.innerHTML = '<div style="background:#f8d7da;color:#721c24;padding:10px;border-radius:4px;border:1px solid #f5c6cb;">Error: ' + json.message + '</div>';
+            }
+        } catch (err) {
+            responseEl.innerHTML = '<div style="background:#f8d7da;color:#721c24;padding:10px;border-radius:4px;border:1px solid #f5c6cb;">Network error. Please try again.</div>';
+            console.error(err);
+        } finally {
+            submitBtn.disabled = false;
+        }
+    });
+    </script>
+
+</body>
+</html>
